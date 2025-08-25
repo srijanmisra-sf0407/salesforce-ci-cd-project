@@ -25,10 +25,10 @@ pipeline {
                         // Authenticate to the Dev Org using JWT
                         sh "sfdx auth:jwt:grant --clientid ${env.DEV_CONSUMER_KEY} --jwtkeyfile ${SFDX_SERVER_KEY_FILE} --username ${env.DEV_USERNAME} --alias DevOrg --set-default"
 
-                        echo "Validating deployment and running specified tests..."
-                        // Perform a validation deployment (--checkonly) against the Dev Org
-                        // This checks if the code is deployable and if the tests pass
-                        sh "sfdx force:source:deploy --sourcepath force-app --checkonly --testlevel RunSpecifiedTests --tests MyAwesomeClassTest"
+                        echo "Validating deployment and running all local tests..."
+                        // Perform a validation deployment (--dry-run) against the Dev Org
+                        // --test-level RunLocalTests will run all tests found in the source files, which is what you want
+                        sh "sf project deploy start --source-dir force-app --test-level RunLocalTests --dry-run"
                     }
                 }
             }
