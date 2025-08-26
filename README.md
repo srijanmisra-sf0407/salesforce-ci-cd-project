@@ -20,4 +20,4 @@ The `sfdx-project.json` file contains useful configuration information for your 
 ## Added Github Webhook on 25th August.
 ## Configured Ngrok Webhook
 ## Trying to trigger Jenkins pipeline
-## Trying again as a multibranch pipeline
+## Trying again as a multibranch trigger
